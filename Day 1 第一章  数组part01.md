@@ -83,3 +83,53 @@
             
 
 ## 27 Remove Element
+[文章](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
+[力扣题](https://leetcode.cn/problems/remove-element/description/)
+
+### 暴力算法
+  - 注意总体的size会变化。
+  - 解法：
+    ```cpp
+    class Solution {
+    public:
+        int removeElement(vector<int>& nums, int val) {
+            int size = nums.size();
+            for (int i=0; i < size; i++)
+            {
+                if (nums[i] == val) // 发现需要移除的元素，就将数组集体向前移动一位
+                {
+                    for (int j=i ; j < nums.size() - 1; j++)
+                    {
+                        nums[j] = nums[j+1];
+                    }
+                    i--; // 因为下标i以后的数值都向前移动了一位，所以i也向前移动一位
+                    size--; // 此时数组的大小-1
+                }
+            }
+            return size;
+        }
+    };
+    ```
+### 双指针法
+
+- 双指针法（快慢指针法）： 通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。
+- 定义快慢指针
+    - 快指针：寻找新数组的元素 ，新数组就是不含有目标元素的数组（一直移动位置）
+    - 慢指针：用于存储需要的元素（只有存储后才移动位置）
+- 解法
+```cpp
+// 时间复杂度：O(n)
+// 空间复杂度：O(1)
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int slowIndex = 0;
+        for (int fastIndex = 0; fastIndex < nums.size(); fastIndex++) {
+            if (val != nums[fastIndex]) {
+                nums[slowIndex++] = nums[fastIndex];
+            }
+        }
+        return slowIndex;
+    }
+};
+```
