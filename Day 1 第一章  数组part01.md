@@ -1,5 +1,6 @@
 # Day 1 第一章  数组part01
 
+##  数组理论基础
 - 数组是存放在连续内存空间上的相同类型数据的集合
     - 数组下标都是从0开始的。
     - 数组内存空间的地址是连续的
@@ -8,7 +9,7 @@
 - 删除或者增添数组元素的时候，**需要移动**其他元素的地址
 - 在C++中，vector是容器，它的底层实现是数组
 
-## 704 Binary Search
+## 704. 二分查找
 [文章](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
 [力扣题](https://leetcode.cn/problems/binary-search/)
 
@@ -82,7 +83,8 @@
   ```
             
 
-## 27 Remove Element
+## 27. 移除元素
+
 [文章](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
 [力扣题](https://leetcode.cn/problems/remove-element/description/)
 
@@ -116,7 +118,7 @@
 - 定义快慢指针
     - 快指针：寻找新数组的元素 ，新数组就是不含有目标元素的数组（一直移动位置）
     - 慢指针：用于存储需要的元素（只有存储后才移动位置）
-- 解法
+- 解法:
 ```cpp
 // 时间复杂度：O(n)
 // 空间复杂度：O(1)
