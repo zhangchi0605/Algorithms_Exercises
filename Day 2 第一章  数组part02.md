@@ -138,14 +138,56 @@ public:
 ### 顺时针画矩阵
 - 模拟顺时针画矩阵的过程: 填充上行从左到右，填充右列从上到下，填充下行从右到左，填充左列从下到上
 - 思路：初始化一个 n×n 大小的矩阵 mat，然后模拟整个向内环绕的填入过程：
-    1 定义当前左右上下边界 l,r,t,b，初始值 num = 1，迭代终止值 tar = n * n；
-    2 当 num <= tar 时，始终按照 从左到右 从上到下 从右到左 从下到上 填入顺序循环，每次填入后：
+    1. 定义当前左右上下边界 l,r,t,b，初始值 num = 1，迭代终止值 tar = n * n；
+    2. 当 num <= tar 时，始终按照 从左到右 从上到下 从右到左 从下到上 填入顺序循环，每次填入后：
         - 执行 num += 1：得到下一个需要填入的数字；
         - 更新边界：例如从左到右填完后，上边界 t += 1，相当于上边界向内缩 1。
-    3 使用num <= tar而不是l < r || t < b作为迭代条件，是为了解决当n为奇数时，矩阵中心数字无法在迭代过程中被填充的问题。
-    4 最终返回 mat 即可。
+    3. 使用num <= tar而不是l < r || t < b作为迭代条件，是为了解决当n为奇数时，矩阵中心数字无法在迭代过程中被填充的问题。
+    4. 最终返回 mat 即可。
+ 
+- 注意：
+    - 初始化矩阵 vector<vector<int>> mat(n, vector<int>(n, 0));
+    - for循环边界条件 for (int i = right; i >= left; i--)
+    
+- 时间复杂度 O(n^2): 模拟遍历二维矩阵的时间
+- 空间复杂度 O(1)
+```cpp
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        
+        vector<vector<int>> mat(n, vector<int>(n, 0));
+        int top = 0;
+        int bottom = n-1;
+        int left = 0;
+        int right = n-1;
+        int num = 1;
+        int target = n*n;
 
-作者：Krahets
-链接：https://leetcode.cn/problems/spiral-matrix-ii/solutions/12594/spiral-matrix-ii-mo-ni-fa-she-ding-bian-jie-qing-x/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+        while (num <= target)
+        {
+            for (int i = left; i <= right; i++) // left to right.
+            {
+                mat[top][i] = num++;
+            }
+            top++;
+            for (int i = top; i <= bottom; i++) // top to bottom.
+            {
+                mat[i][right] = num++;
+            }
+            right--;
+            for (int i = right; i >= left; i--) // right to left.
+            {
+                mat[bottom][i] = num++;
+            }
+            bottom--;
+            for (int i = bottom; i >= top; i--) // bottom to top.
+            {
+                mat[i][left] = num++;
+            }
+            left++;
+        }
+        return mat;
+    }
+};
+```
