@@ -98,25 +98,24 @@ public:
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
-        int back_index = 0;
-        int sum = 0;
-        int sub_length = 0;
+        int front_index = 0; // 滑动窗口起始位置
+        int sum = 0; // 滑动窗口数值之和
+        int subLength = 0; // 滑动窗口的长度
         int result = INT32_MAX;
 
-        for (int front_index=0; front_index < nums.size(); front_index++)
+        for (int back_index = 0; back_index < nums.size(); back_index++)
         {
-            sum += nums[front_index];
+            sum += nums[back_index];
 
-            while (sum >= target)
+            while (sum >= target) // 注意这里使用while，每次更新 front_index（起始位置），并不断比较子序列是否符合条件
             {
-                sub_length = front_index - back_index + 1;
-                result = sub_length < result ? sub_length : result;
-
-                sum -= nums[back_index++];
+                subLength = back_index - front_index + 1;
+                result = result < subLength ? result : subLength;
+                sum -= nums[front_index]; 
+                front_index++; // 这里体现出滑动窗口的精髓之处，不断变更front_index（子序列的起始位置）
             }
         }
-
-        return (result == INT32_MAX ? 0 : result);
+        return result == INT32_MAX ? 0 : result;
     }
 };
 ```
