@@ -1,4 +1,4 @@
-# Day 1 第一章  数组part01
+# Day 1 第一章  数组 Part01
 
 ##  数组理论基础
 - 数组是存放在连续内存空间上的相同类型数据的集合
@@ -10,8 +10,8 @@
 - 在C++中，vector是容器，它的底层实现是数组
 
 ## 704. 二分查找
-[文章](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
-[力扣题](https://leetcode.cn/problems/binary-search/)
+[文章讲解](https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html)
+[题目链接](https://leetcode.cn/problems/binary-search/)
 
 - 二分搜索在循环搜索的过程中需要注意的内容：
     - 坚持搜索区间的定义**(左闭右闭)、(左闭右开)**
@@ -85,8 +85,8 @@
 
 ## 27. 移除元素
 
-[文章](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
-[力扣题](https://leetcode.cn/problems/remove-element/description/)
+[文章讲解](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
+[题目链接](https://leetcode.cn/problems/remove-element/description/)
 
 ### 暴力算法
   - 注意总体的size会变化。
