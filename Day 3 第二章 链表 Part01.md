@@ -1,7 +1,7 @@
-# Day 3 第二章 链表part01
+# Day 3 第二章 链表 Part01
 
 ## 链表理论基础
-
+[文章讲解](https://programmercarl.com/%E9%93%BE%E8%A1%A8%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html)
 
 ## 203.移除链表元素
 [题目链接]()
