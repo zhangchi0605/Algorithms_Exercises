@@ -5,9 +5,10 @@
 [文章讲解](https://programmercarl.com/0977.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9.html)
 [视频讲解](https://www.bilibili.com/video/BV1QB4y1D7ep )
 
-# 暴力排序
+### 暴力排序
 - 每个数平方之后，排个序
 - 时间复杂度是 O(n + nlogn)
+- 注意：sort命令：std::sort (myvector.begin(), myvector.end());
 ```cpp
 class Solution {
 public:
@@ -22,10 +23,13 @@ public:
     }
 };
 ```
-
-
-
-
+### 双指针法
+- 数组其实是有序的， 只不过负数平方之后可能成为最大数了。
+- 那么数组平方的最大值就在数组的两端，不是最左边就是最右边，不可能是中间。
+- 时间复杂度为O(n)
+  
+- 注意：数组要初始化 ```cpp vector<int> result(nums.size(), 0); ``` 
+  
 ```cpp
 class Solution {
 public:
