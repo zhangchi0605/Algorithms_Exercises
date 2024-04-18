@@ -1,4 +1,4 @@
-# Day 2 第一章  数组part02
+# Day 2 第一章  数组 Part02
 
 ## 977.有序数组的平方
 [题目链接](https://leetcode.cn/problems/squares-of-a-sorted-array/)
