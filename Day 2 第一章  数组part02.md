@@ -134,3 +134,18 @@ public:
 [题目链接](https://leetcode.cn/problems/spiral-matrix-ii/)
 [文章讲解](https://programmercarl.com/0059.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II.html)
 [视频讲解](https://www.bilibili.com/video/BV1SL4y1N7mV/)
+
+### 顺时针画矩阵
+- 模拟顺时针画矩阵的过程: 填充上行从左到右，填充右列从上到下，填充下行从右到左，填充左列从下到上
+- 思路：初始化一个 n×n 大小的矩阵 mat，然后模拟整个向内环绕的填入过程：
+    1 定义当前左右上下边界 l,r,t,b，初始值 num = 1，迭代终止值 tar = n * n；
+    2 当 num <= tar 时，始终按照 从左到右 从上到下 从右到左 从下到上 填入顺序循环，每次填入后：
+        - 执行 num += 1：得到下一个需要填入的数字；
+        - 更新边界：例如从左到右填完后，上边界 t += 1，相当于上边界向内缩 1。
+    3 使用num <= tar而不是l < r || t < b作为迭代条件，是为了解决当n为奇数时，矩阵中心数字无法在迭代过程中被填充的问题。
+    4 最终返回 mat 即可。
+
+作者：Krahets
+链接：https://leetcode.cn/problems/spiral-matrix-ii/solutions/12594/spiral-matrix-ii-mo-ni-fa-she-ding-bian-jie-qing-x/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
