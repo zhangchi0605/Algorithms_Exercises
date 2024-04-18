@@ -28,7 +28,7 @@ public:
 - 那么数组平方的最大值就在数组的两端，不是最左边就是最右边，不可能是中间。
 - 时间复杂度为O(n)
   
-- 注意：数组要初始化 ```cpp vector<int> result(nums.size(), 0); ``` 
+- 注意：数组要初始化 ``` vector<int> result(nums.size(), 0); ``` 
   
 ```cpp
 class Solution {
