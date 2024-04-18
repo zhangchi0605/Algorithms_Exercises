@@ -57,9 +57,9 @@ struct ListNode {
 
 
 ## 203.移除链表元素
-[题目链接]()
-[文章讲解]()
-[视频讲解]()
+[题目链接](https://leetcode.cn/problems/remove-linked-list-elements/)
+[文章讲解](https://programmercarl.com/0203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.html)
+[视频讲解](https://www.bilibili.com/video/BV18B4y1s7R9)
 
 ## 707.设计链表 
 [题目链接]()
