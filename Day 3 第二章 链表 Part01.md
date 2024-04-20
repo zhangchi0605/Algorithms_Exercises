@@ -113,24 +113,25 @@ public:
 ```cpp
 class MyLinkedList {
 public:
-    // 定义链表节点结构体
-    struct ListNode {
+    struct ListNode{
         int val;
         ListNode* next;
-        ListNode(int val):val(val), next(nullptr){}
+        ListNode(int val): val(val), next(nullptr){}
     };
 
     MyLinkedList() {
-        this->size = 0;
-        this->head = new ListNode(0);
+         size_ = 0;
+         dummyHead_ = new ListNode(0);
     }
     
     int get(int index) {
-        if (index < 0 || index >= size) {
+        if (index < 0 || index >= size_)
+        {
             return -1;
         }
-        ListNode *cur = head;
-        for (int i = 0; i <= index; i++) {
+        ListNode* cur = dummyHead_;
+        for (int i = 0; i <= index; i++)
+        {
             cur = cur->next;
         }
         return cur->val;
@@ -141,40 +142,48 @@ public:
     }
     
     void addAtTail(int val) {
-        addAtIndex(size, val);
+        addAtIndex(size_, val);
     }
     
     void addAtIndex(int index, int val) {
-        if (index > size) {
+        if (index > size_)
+        {
             return;
         }
-        index = max(0, index);
-        size++;
-        ListNode *pred = head;
-        for (int i = 0; i < index; i++) {
+        if (index < 0)
+        {
+            index = 0;
+        }
+        ListNode* pred = dummyHead_;
+        for (int i = 0; i < index; i++)
+        {
             pred = pred->next;
         }
-        ListNode *toAdd = new ListNode(val);
-        toAdd->next = pred->next;
-        pred->next = toAdd;
+        ListNode* newNode = new ListNode(val);
+        newNode->next = pred->next;
+        pred->next = newNode;
+        size_++;
     }
     
     void deleteAtIndex(int index) {
-        if (index < 0 || index >= size) {
+        if (index < 0 || index >= size_)
+        {
             return;
         }
-        size--;
-        ListNode *pred = head;
-        for (int i = 0; i < index; i++) {
+        ListNode* pred = dummyHead_;
+        for (int i = 0; i< index ; i++)
+        {
             pred = pred->next;
-        }
-        ListNode *p = pred->next;
+        } 
+        ListNode* temp = new ListNode(0);
+        temp->next = pred->next; // 注意是toAdd的next
         pred->next = pred->next->next;
-        delete p;
+        delete temp;
+        size_--;
     }
 private:
-    int size;
-    ListNode *head;
+    int size_;
+    ListNode* dummyHead_;
 };
 ```
 ## 206.反转链表 
