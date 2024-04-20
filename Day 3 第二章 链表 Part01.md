@@ -104,7 +104,11 @@ public:
     - deleteAtIndex(index)：如果索引 index 有效，则删除链表中的第 index 个节点
 
 - LeetCode [官方题解不错](https://leetcode.cn/problems/design-linked-list/solutions/1840997/she-ji-lian-biao-by-leetcode-solution-abix/)
-- 复杂度<img width="365" alt="image" src="https://github.com/zhangchi0605/LeetCode/assets/30234384/51550d8f-2b74-4d63-8b1c-99a6fffd95c7">
+    - <img width="700" alt="image" src="https://github.com/zhangchi0605/LeetCode/assets/30234384/ad5d45f4-dc00-4617-839c-29441f9b6720">
+    - <img width="700" alt="image" src="https://github.com/zhangchi0605/LeetCode/assets/30234384/6e6bc341-cfe3-4852-aa11-70a46b740cba">
+    - ![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/5a7bcf88-f2e9-4701-82ff-9098b79029a2)
+
+- 复杂度<img width="700" alt="image" src="https://github.com/zhangchi0605/LeetCode/assets/30234384/51550d8f-2b74-4d63-8b1c-99a6fffd95c7">
 
 ```cpp
 class MyLinkedList {
