@@ -61,6 +61,33 @@ struct ListNode {
 [文章讲解](https://programmercarl.com/0203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.html)
 [视频讲解](https://www.bilibili.com/video/BV18B4y1s7R9)
 
+#### 虚拟头结点法
+- 设置一个虚拟头结点,并指向head: ```ListNode* dummy_node = new ListNode(0, head); ```
+![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/f2367895-5086-4b87-9fe7-3d8f04c4d44a)
+
+- 代码：
+```cpp
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode* dummy_node = new ListNode(0, head);
+        ListNode* current_node = dummy_node;  // Start with the dummy node
+        while (current_node->next != nullptr) {
+            if (current_node->next->val == val) { // 注意是下一个node的值等于val
+                ListNode* temp = current_node->next;
+                current_node->next = current_node->next->next;
+                delete temp;
+            } else {
+                current_node = current_node->next;
+            }
+        }
+        head = dummy_node->next;
+        delete dummy_node;
+        return head;
+    }
+};
+```
+
 ## 707.设计链表 
 [题目链接]()
 [文章讲解]()
