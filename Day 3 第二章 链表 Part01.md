@@ -91,9 +91,10 @@ public:
 ```
 
 ## 707.设计链表 
-[题目链接]()
-[文章讲解]()
-[视频讲解]()
+[题目链接](https://leetcode.cn/problems/design-linked-list/)
+[LeetCode官方题解不错](https://leetcode.cn/problems/design-linked-list/solutions/1840997/she-ji-lian-biao-by-leetcode-solution-abix/)
+[文章讲解](https://programmercarl.com/0707.%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8.html)
+[视频讲解](https://www.bilibili.com/video/BV1FU4y1X7WD)
 ### 虚拟头结点法
 - 获取链表中下标为 index 的节点的值的意思是: 第 index 个节点
 - 实现功能:
@@ -187,6 +188,29 @@ private:
 };
 ```
 ## 206.反转链表 
-[题目链接]()
-[文章讲解]()
-[视频讲解]()
+[题目链接](https://leetcode.cn/problems/reverse-linked-list/description/)
+[文章讲解](https://programmercarl.com/0206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.html)
+[视频讲解](https://www.bilibili.com/video/BV1nB4y1i7eL/?vd_source=1bc318add9a1227b74285d67a88bdf4a)
+
+### 双指针法
+- 如果再定义一个新的链表，实现链表元素的反转，其实这是对内存空间的浪费
+- 改变链表的next指针的指向，直接将链表反转
+![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/21cfcad3-65c1-4582-8ddb-30b9026daefd)
+```cpp
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* temp;
+        ListNode* cur  = head;
+        ListNode* pre  = nullptr;
+        while(cur)
+        {
+            temp = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
+};
+```
