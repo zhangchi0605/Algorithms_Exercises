@@ -61,11 +61,13 @@ struct ListNode {
 [文章讲解](https://programmercarl.com/0203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.html)
 [视频讲解](https://www.bilibili.com/video/BV18B4y1s7R9)
 
-#### 虚拟头结点法
+### 虚拟头结点法
 - 设置一个虚拟头结点,并指向head: ```ListNode* dummy_node = new ListNode(0, head); ```
 ![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/f2367895-5086-4b87-9fe7-3d8f04c4d44a)
 
 - 代码：
+- 时间复杂度: O(n)
+- 空间复杂度: O(1)
 ```cpp
 class Solution {
 public:
@@ -92,8 +94,85 @@ public:
 [题目链接]()
 [文章讲解]()
 [视频讲解]()
+### 虚拟头结点法
+- 获取链表中下标为 index 的节点的值的意思是: 第 index 个节点
+- 实现功能:
+    - get(index)：获取链表中第 index 个节点的值。如果索引无效，则返回-1。
+    - addAtHead(val)：在链表的第一个元素之前添加一个值为 val 的节点。插入后，新节点将成为链表的第一个节点。
+    - addAtTail(val)：将值为 val 的节点追加到链表的最后一个元素。
+    - addAtIndex(index,val)：在链表中的第 index 个节点之前添加值为 val  的节点。如果 index 等于链表的长度，则该节点将附加到链表的末尾。如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。
+    - deleteAtIndex(index)：如果索引 index 有效，则删除链表中的第 index 个节点
 
+- LeetCode [官方题解不错](https://leetcode.cn/problems/design-linked-list/solutions/1840997/she-ji-lian-biao-by-leetcode-solution-abix/)
+- 复杂度<img width="365" alt="image" src="https://github.com/zhangchi0605/LeetCode/assets/30234384/51550d8f-2b74-4d63-8b1c-99a6fffd95c7">
 
+```cpp
+class MyLinkedList {
+public:
+    // 定义链表节点结构体
+    struct ListNode {
+        int val;
+        ListNode* next;
+        ListNode(int val):val(val), next(nullptr){}
+    };
+
+    MyLinkedList() {
+        this->size = 0;
+        this->head = new ListNode(0);
+    }
+    
+    int get(int index) {
+        if (index < 0 || index >= size) {
+            return -1;
+        }
+        ListNode *cur = head;
+        for (int i = 0; i <= index; i++) {
+            cur = cur->next;
+        }
+        return cur->val;
+    }
+    
+    void addAtHead(int val) {
+        addAtIndex(0, val);
+    }
+    
+    void addAtTail(int val) {
+        addAtIndex(size, val);
+    }
+    
+    void addAtIndex(int index, int val) {
+        if (index > size) {
+            return;
+        }
+        index = max(0, index);
+        size++;
+        ListNode *pred = head;
+        for (int i = 0; i < index; i++) {
+            pred = pred->next;
+        }
+        ListNode *toAdd = new ListNode(val);
+        toAdd->next = pred->next;
+        pred->next = toAdd;
+    }
+    
+    void deleteAtIndex(int index) {
+        if (index < 0 || index >= size) {
+            return;
+        }
+        size--;
+        ListNode *pred = head;
+        for (int i = 0; i < index; i++) {
+            pred = pred->next;
+        }
+        ListNode *p = pred->next;
+        pred->next = pred->next->next;
+        delete p;
+    }
+private:
+    int size;
+    ListNode *head;
+};
+```
 ## 206.反转链表 
 [题目链接]()
 [文章讲解]()
