@@ -42,9 +42,44 @@ public:
 ```
 
 ## 19.删除链表的倒数第N个节点
-[题目链接]()
-[文章讲解]()
-[视频讲解]()
+[题目链接](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+[文章讲解](https://programmercarl.com/0019.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9.html)
+[视频讲解](https://www.bilibili.com/video/BV1vW4y1U7Gf)
+
+### 双指针(快慢指针)
+- 定义fast指针和slow指针，初始值为虚拟头结点 ![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/d7c82362-bd32-4991-b7f6-920f57262516)
+- fast首先走n + 1步 ，为什么是n+1呢，因为只有这样同时移动的时候slow才能指向删除节点的上一个节点（方便做删除操作）![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/8db0c4c0-62e4-4839-9fd0-33f197b45646)
+- fast和slow同时移动，直到fast指向末尾 ![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/2f2f75ab-10b3-4da4-815c-42a95c99733a)
+- 删除slow指向的下一个节点 ![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/5da35938-4a15-4446-99ef-b6c94822b330)
+  
+- 时间复杂度: O(n)
+- 空间复杂度: O(1)
+```cpp
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* dummyHead = new ListNode(0, head);
+        ListNode* fast = dummyHead;
+        ListNode* slow = dummyHead;
+        while(n-- && fast != nullptr) {
+            fast = fast->next;
+        }
+        fast = fast->next; // fast再提前走一步，因为需要让slow指向删除节点的上一个节点
+        while (fast)
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+
+        ListNode* tem = slow->next;
+        slow->next = tem->next;
+        delete tem;
+        ListNode* result = dummyHead->next;
+        delete dummyHead;
+        return result;
+    }
+};
+```
 
 ## 面试题 02.07. 链表相交
 [题目链接]()
