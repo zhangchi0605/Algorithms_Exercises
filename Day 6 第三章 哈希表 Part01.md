@@ -123,6 +123,46 @@ public:
 ## 202. 快乐数
 [题目链接](https://leetcode.cn/problems/happy-number/)
 [文章讲解](https://programmercarl.com/0202.%E5%BF%AB%E4%B9%90%E6%95%B0.html#%E6%80%9D%E8%B7%AF)
+
+###
+- 题目中说了会 无限循环，那么也就是说求和的过程中，sum会重复出现
+- 当我们遇到了要快速判断一个元素是否出现集合里的时候，就要考虑哈希法了 (判断sum是否重复出现就可以使用unordered_set)
+- 还有一个难点就是求和的过程，如果对取数值各个位上的单数操作 ```n % 10``` 以及  ```n /= 10```;
+  
+- 时间复杂度: O(logn)
+- 空间复杂度: O(logn)
+
+```cpp
+class Solution {
+public:
+    // 取数值各个位上的单数之和
+    int getSum(int n) {
+        int sum = 0;
+        while (n) {
+            sum += (n % 10) * (n % 10);
+            n /= 10;
+        }
+        return sum;
+    }
+    bool isHappy(int n) {
+        unordered_set<int> set;
+        while(1) {
+            int sum = getSum(n);
+            if (sum == 1) {
+                return true;
+            }
+            // 如果这个sum曾经出现过，说明已经陷入了无限循环了，立刻return false
+            if (set.find(sum) != set.end()) {
+                return false;
+            } else {
+                set.insert(sum);
+            }
+            n = sum;
+        }
+    }
+};
+```
+
  
 ## 1. 两数之和
 [题目链接](https://leetcode.cn/problems/two-sum/)
