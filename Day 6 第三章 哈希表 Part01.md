@@ -33,7 +33,7 @@
 #### 线性探测法
 - 使用线性探测法，一定要保证tableSize大于dataSize
 - 例如冲突的位置，放了小李，那么就向下找一个空位放置小王的信息。所以要求tableSize一定要大于dataSize ，要不然哈希表上就没有空置的位置来存放 冲突的数据了
-- ![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/adc671ed-7ce2-408a-98a6-420c0ffad67c)
+![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/adc671ed-7ce2-408a-98a6-420c0ffad67c)
 
 ### 常见的三种哈希结构
 - 数组
@@ -49,11 +49,19 @@
 [文章讲解](https://programmercarl.com/0242.%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D.html)
 [视频讲解](https://www.bilibili.com/video/BV1YG411p7BA)
 
+### 思路（数组就是一个简单哈希表）
+- 这道题目中字符串只有小写字符，那么就可以定义一个数组，来记录字符串s里字符出现的次数
+- 需要把字符映射到数组也就是哈希表的索引下标上
+- 因为字符a到字符z的ASCII是26个连续的数值，所以字符a映射为下标0，相应的字符z映射为下标25 （只需要将 s[i] - ‘a’ 所在的元素做+1 操作即可）
 ## 349. 两个数组的交集 
 [题目链接](https://leetcode.cn/problems/intersection-of-two-arrays/)
 [文章讲解](https://programmercarl.com/0349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86.html)
 [视频讲解](https://www.bilibili.com/video/BV1ba411S7wu)
 
+### 注意
+- C-style Array (´´´int record[26] = {};´´´): This is a plain old data type (POD) from C, adopted in C++. It is very straightforward and uses static memory allocation. It lacks any sort of member functions or methods.
+- C++-style std::array (´´´std::array<int, 26> a{};´´´): This is a container that comes from the C++ Standard Template Library (STL). It wraps around a C-style array to provide convenience functions, type safety, and compatibility with other STL algorithms and functions.
+  
 ## 202. 快乐数
 [题目链接](https://leetcode.cn/problems/happy-number/)
 [文章讲解](https://programmercarl.com/0202.%E5%BF%AB%E4%B9%90%E6%95%B0.html#%E6%80%9D%E8%B7%AF)
