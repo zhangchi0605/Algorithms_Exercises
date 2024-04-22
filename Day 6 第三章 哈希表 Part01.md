@@ -168,3 +168,38 @@ public:
 [题目链接](https://leetcode.cn/problems/two-sum/)
 [文章讲解](https://programmercarl.com/0001.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE)
 [视频讲解](https://www.bilibili.com/video/BV1aT41177mK)
+
+### 思考
+- 为什么会想到用哈希表
+  - 当我们需要查询一个元素是否出现过，或者一个元素是否在集合里的时候，就要第一时间想到哈希法。 
+- 哈希表为什么用map
+  - 数组的大小是受限制的，而且如果元素很少，而哈希值太大会造成内存空间的浪费。
+  - set是一个集合，里面放的元素只能是一个key，而两数之和这道题目，不仅要判断y是否存在而且还要记录y的下标位置，因为要返回x 和 y的下标。所以set 也不能用。
+  - std::unordered_map 底层实现为哈希表，std::map 和std::multimap 的底层实现是红黑树。std::map 和std::multimap 的key也是有序的, 这道题目中并不需要key有序，选择std::unordered_map 效率更高！
+- 本题map是用来存什么的
+  - 因为本题，我们不仅要知道元素有没有遍历过，还要知道这个元素对应的下标，需要使用 key value结构来存放，key来存元素，value来存下标，那么使用map正合适。
+- map中的key和value用来存什么的
+  - {key：数据元素，value：数组元素对应的下标} 
+![image](https://github.com/zhangchi0605/LeetCode/assets/30234384/456e0252-71f6-4654-90c5-969b468726bb)
+
+- 时间复杂度: O(n)
+- 空间复杂度: O(n)
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        std::unordered_map <int,int> map;
+        for(int i = 0; i < nums.size(); i++) {
+            // 遍历当前元素，并在map中寻找是否有匹配的key
+            auto iter = map.find(target - nums[i]); 
+            if(iter != map.end()) {
+                return {iter->second, i};
+            }
+            // 如果没找到匹配对，就把访问过的元素和下标加入到map中
+            map.insert(pair<int, int>(nums[i], i)); 
+        }
+        return {};
+    }
+};
+
+```
