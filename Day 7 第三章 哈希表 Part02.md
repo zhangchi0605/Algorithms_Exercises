@@ -52,6 +52,37 @@ public:
 [文章讲解]()
 [视频讲解]()
 
+### 哈希解法
+- 因为题目说只有小写字母，那可以采用空间换取时间的哈希策略，用一个长度为26的数组来记录magazine里字母出现的次数。
+- 注意 sring 可以获取长度```i < ransomNote.length()```
+  
+- 时间复杂度: O(n)
+- 空间复杂度: O(1)
+```cpp
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int record[26] = {0};
+        for (int i = 0; i < ransomNote.length(); i++)
+        {
+            record[ransomNote[i] - 'a']++;
+        }
+        for (int i = 0; i < magazine.length(); i++)
+        {
+            record[magazine[i] - 'a']--;
+        }
+        for (int i = 0; i < 26; i++)
+        {
+            if (record[i] > 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+
 ## 15. 三数之和 
 [题目链接]()
 [文章讲解]()
