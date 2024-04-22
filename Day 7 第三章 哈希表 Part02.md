@@ -84,10 +84,63 @@ public:
 ```
 
 ## 15. 三数之和 
-[题目链接]()
-[文章讲解]()
-[视频讲解]()
+[题目链接](https://programmercarl.com/0001.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C.html)
+[文章讲解](https://programmercarl.com/0015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE)
+[视频讲解](https://www.bilibili.com/video/BV1GW4y127qo)
 
+### 思路
+- 首先将数组排序，然后有一层for循环，i从下标0的地方开始，同时定一个下标left 定义在i+1的位置上，定义下标right 在数组结尾的位置上
+- abc 使得a + b +c =0，我们这里相当于 a = nums[i]，b = nums[left]，c = nums[right]。
+- 接下来如何移动left 和right呢， 如果nums[i] + nums[left] + nums[right] > 0 就说明 此时三数之和大了，因为数组是排序后了，所以right下标就应该向左移动，这样才能让三数之和小一些。
+- 如果 nums[i] + nums[left] + nums[right] < 0 说明 此时 三数之和小了，left 就向右移动，才能让三数之和大一些，直到left与right相遇为止。
+```cpp
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> result;
+        sort(nums.begin(), nums.end());
+        // 找出a + b + c = 0
+        // a = nums[i], b = nums[left], c = nums[right]
+        for (int i = 0; i < nums.size(); i++) {
+            // 排序之后如果第一个元素已经大于零，那么无论如何组合都不可能凑成三元组，直接返回结果就可以了
+            if (nums[i] > 0) {
+                return result;
+            }
+            // 错误去重a方法，将会漏掉-1,-1,2 这种情况
+            /*
+            if (nums[i] == nums[i + 1]) {
+                continue;
+            }
+            */
+            // 正确去重a方法
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int left = i + 1;
+            int right = nums.size() - 1;
+            while (right > left) {
+                // 去重复逻辑如果放在这里，0，0，0 的情况，可能直接导致 right<=left 了，从而漏掉了 0,0,0 这种三元组
+                /*
+                while (right > left && nums[right] == nums[right - 1]) right--;
+                while (right > left && nums[left] == nums[left + 1]) left++;
+                */
+                if (nums[i] + nums[left] + nums[right] > 0) right--;
+                else if (nums[i] + nums[left] + nums[right] < 0) left++;
+                else {
+                    result.push_back(vector<int>{nums[i], nums[left], nums[right]});
+                    // 去重逻辑应该放在找到一个三元组之后，对b 和 c去重
+                    while (right > left && nums[right] == nums[right - 1]) right--;
+                    while (right > left && nums[left] == nums[left + 1]) left++;
+
+                    // 找到答案时，双指针同时收缩
+                    right--;
+                    left++;
+                }
+            }
+
+        }
+        return result;
+```
 ## 18. 四数之和 
 [题目链接]()
 [文章讲解]()
