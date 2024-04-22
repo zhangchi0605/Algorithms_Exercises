@@ -53,14 +53,42 @@
 - 这道题目中字符串只有小写字符，那么就可以定义一个数组，来记录字符串s里字符出现的次数
 - 需要把字符映射到数组也就是哈希表的索引下标上
 - 因为字符a到字符z的ASCII是26个连续的数值，所以字符a映射为下标0，相应的字符z映射为下标25 （只需要将 s[i] - ‘a’ 所在的元素做+1 操作即可）
+- 最后如果record数组所有元素都为零0，说明字符串s和t是字母异位词
+
+### 注意
+- C-style Array (```int record[26] = {};```): This is a plain old data type (POD) from C, adopted in C++. It is very straightforward and uses static memory allocation. It lacks any sort of member functions or methods.```
+- C++-style std::array (```std::array<int, 26> a{};```): This is a container that comes from the C++ Standard Template Library (STL). It wraps around a C-style array to provide convenience functions, type safety, and compatibility with other STL algorithms and functions.
+
+cpp```
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        int record[26] = {0};
+        for (int i = 0; i < s.size(); i++) {
+            // 并不需要记住字符a的ASCII，只要求出一个相对数值就可以了
+            record[s[i] - 'a']++;
+        }
+        for (int i = 0; i < t.size(); i++) {
+            record[t[i] - 'a']--;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (record[i] != 0) {
+                // record数组如果有的元素不为零0，说明字符串s和t 一定是谁多了字符或者谁少了字符。
+                return false;
+            }
+        }
+        // record数组所有元素都为零0，说明字符串s和t是字母异位词
+        return true;
+    }
+};
+
+```
 ## 349. 两个数组的交集 
 [题目链接](https://leetcode.cn/problems/intersection-of-two-arrays/)
 [文章讲解](https://programmercarl.com/0349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86.html)
 [视频讲解](https://www.bilibili.com/video/BV1ba411S7wu)
 
-### 注意
-- C-style Array (```int record[26] = {};```): This is a plain old data type (POD) from C, adopted in C++. It is very straightforward and uses static memory allocation. It lacks any sort of member functions or methods.```
-- C++-style std::array (```std::array<int, 26> a{};```): This is a container that comes from the C++ Standard Template Library (STL). It wraps around a C-style array to provide convenience functions, type safety, and compatibility with other STL algorithms and functions.
+
   
 ## 202. 快乐数
 [题目链接](https://leetcode.cn/problems/happy-number/)
