@@ -59,8 +59,8 @@
 [视频讲解](https://www.bilibili.com/video/BV1ba411S7wu)
 
 ### 注意
-- C-style Array (´´´int record[26] = {};´´´): This is a plain old data type (POD) from C, adopted in C++. It is very straightforward and uses static memory allocation. It lacks any sort of member functions or methods.
-- C++-style std::array (´´´std::array<int, 26> a{};´´´): This is a container that comes from the C++ Standard Template Library (STL). It wraps around a C-style array to provide convenience functions, type safety, and compatibility with other STL algorithms and functions.
+- C-style Array (```int record[26] = {};```): This is a plain old data type (POD) from C, adopted in C++. It is very straightforward and uses static memory allocation. It lacks any sort of member functions or methods.```
+- C++-style std::array (```std::array<int, 26> a{};```): This is a container that comes from the C++ Standard Template Library (STL). It wraps around a C-style array to provide convenience functions, type safety, and compatibility with other STL algorithms and functions.
   
 ## 202. 快乐数
 [题目链接](https://leetcode.cn/problems/happy-number/)
