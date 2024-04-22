@@ -59,7 +59,7 @@
 - C-style Array (```int record[26] = {};```): This is a plain old data type (POD) from C, adopted in C++. It is very straightforward and uses static memory allocation. It lacks any sort of member functions or methods.```
 - C++-style std::array (```std::array<int, 26> a{};```): This is a container that comes from the C++ Standard Template Library (STL). It wraps around a C-style array to provide convenience functions, type safety, and compatibility with other STL algorithms and functions.
 
-cpp```
+```cpp
 class Solution {
 public:
     bool isAnagram(string s, string t) {
@@ -81,8 +81,9 @@ public:
         return true;
     }
 };
-
 ```
+
+
 ## 349. 两个数组的交集 
 [题目链接](https://leetcode.cn/problems/intersection-of-two-arrays/)
 [文章讲解](https://programmercarl.com/0349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86.html)
