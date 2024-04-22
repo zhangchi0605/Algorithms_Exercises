@@ -48,9 +48,9 @@ public:
 ```
 
 ## 383. 赎金信 
-[题目链接]()
-[文章讲解]()
-[视频讲解]()
+[题目链接](https://leetcode.cn/problems/ransom-note/)
+[文章讲解](https://programmercarl.com/0383.%E8%B5%8E%E9%87%91%E4%BF%A1.html)
+[视频讲解](https://programmercarl.com/0242.%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D.html)
 
 ### 哈希解法
 - 因为题目说只有小写字母，那可以采用空间换取时间的哈希策略，用一个长度为26的数组来记录magazine里字母出现的次数。
