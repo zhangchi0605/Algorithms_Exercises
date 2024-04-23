@@ -79,3 +79,6 @@
 ```
 
 ## 卡码网：55.右旋转字符串
+[题目链接](https://kamacoder.com/problempage.php?pid=1065)
+[文章讲解](https://programmercarl.com/kama55.%E5%8F%B3%E6%97%8B%E5%AD%97%E7%AC%A6%E4%B8%B2.html)
+
