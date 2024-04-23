@@ -64,7 +64,7 @@
 - 我们将整个字符串都反转过来，那么单词的顺序指定是倒序了，只不过单词本身也倒序了，那么再把单词反转一下，单词不就正过来了。
   
 ### 过程
-    - 移除多余空格 [参考移除元素](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
+    - 移除多余空格 [参考移除元素]([https://www.bilibili.com/video/BV1uT41177fX](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html))
     - 将整个字符串反转
     - 将每个单词反转
 
