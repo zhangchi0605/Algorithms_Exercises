@@ -61,5 +61,16 @@
 [文章讲解](https://programmercarl.com/0151.%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE)
 [视频讲解](https://www.bilibili.com/video/BV1uT41177fX)
 
+- 我们将整个字符串都反转过来，那么单词的顺序指定是倒序了，只不过单词本身也倒序了，那么再把单词反转一下，单词不就正过来了。
+  
+### 过程
+    - 移除多余空格 [参考移除元素](https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html)
+    - 将整个字符串反转
+    - 将每个单词反转
 
+- 举个例子，源字符串为："the sky is blue "
+   - 移除多余空格 : "the sky is blue"
+   - 字符串反转："eulb si yks eht"
+   - 单词反转："blue is sky the"
+     
 ## 卡码网：55.右旋转字符串
