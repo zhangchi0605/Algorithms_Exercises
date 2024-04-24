@@ -197,3 +197,27 @@ public:
 [题目链接](https://kamacoder.com/problempage.php?pid=1065)
 [文章讲解](https://programmercarl.com/kama55.%E5%8F%B3%E6%97%8B%E5%AD%97%E7%AC%A6%E4%B8%B2.html)
 
+### 过程
+- 整体反转
+- 分段 翻转前n部分
+- 分段 翻转剩余部分
+  
+```cpp
+// 版本一
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main() {
+    int n;
+    string s;
+    cin >> n;
+    cin >> s;
+    int len = s.size(); //获取长度
+
+    reverse(s.begin(), s.end()); // 整体反转
+    reverse(s.begin(), s.begin() + n); // 先反转前一段，长度n
+    reverse(s.begin() + n, s.end()); // 再反转后一段
+
+    cout << s << endl;
+} 
+```
