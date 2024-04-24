@@ -82,7 +82,56 @@ public:
 - 然后从后向前替换数字字符，也就是双指针法，过程如下：i指向新长度的末尾，j指向旧长度的末尾。
   - 时间复杂度：O(n)
   - 空间复杂度：O(1)
+### 注意
+- <span style="color: red;">单字符'', 双字符""</span>
+
 ```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string s;
+    while (cin >> s)
+    {
+        int  oldIndex = s.size() - 1;
+        
+        int counter = 0;
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (s[i] >= '0' && s[i] <= '9')
+            {
+                counter++;
+            }
+        }
+        
+        int newSize = s.size() + counter*5;
+        s.resize(newSize);
+        
+        int  newIndex = s.size() - 1;
+        
+        while(oldIndex>=0)
+        {
+            if (s[oldIndex] >= '0' && s[oldIndex] <= '9')
+            {
+                s[newIndex--] = 'r';
+                s[newIndex--] = 'e';
+                s[newIndex--] = 'b';
+                s[newIndex--] = 'm';
+                s[newIndex--] = 'u';
+                s[newIndex--] = 'n';
+            }
+            else
+            {
+                s[newIndex--] = s[oldIndex];
+            }
+            oldIndex--;
+        }
+        
+        cout << s << endl;
+    }
+    return 0;
+}
 ```
 
 ## 151.翻转字符串里的单词
