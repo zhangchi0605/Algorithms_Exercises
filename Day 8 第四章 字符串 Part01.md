@@ -83,7 +83,7 @@ public:
   - 时间复杂度：O(n)
   - 空间复杂度：O(1)
 ### 注意
-- <span style="color: red;">单字符'', 双字符""</span>
+__单字符'', 双字符""__
 
 ```cpp
 #include <iostream>
