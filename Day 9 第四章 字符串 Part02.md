@@ -21,9 +21,5 @@
 ## 字符串总结 
 [文章讲解](https://programmercarl.com/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93.html)
 
-## 字符串：总结篇 
-
 ## 双指针回顾
 [文章讲解](https://programmercarl.com/%E5%8F%8C%E6%8C%87%E9%92%88%E6%80%BB%E7%BB%93.html)
-
-## 双指针总结篇
