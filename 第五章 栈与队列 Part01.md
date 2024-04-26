@@ -99,7 +99,54 @@ public:
 ```
 
 ## 225.用队列实现栈
-[题目链接]()
-[文章讲解]()
-[视频讲解]()
+[题目链接](https://leetcode.cn/problems/implement-stack-using-queues/)
+[文章讲解](https://programmercarl.com/0225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88.html)
+[视频讲解](https://www.bilibili.com/video/BV1Fd4y1K7sm)
 
+## 思路
+- 队列模拟栈，其实一个队列就够了
+- 一个队列在模拟栈弹出元素的时候只要将队列头部的元素（除了最后一个元素外） 重新添加到队列尾部，此时再去弹出元素就是栈的顺序了。
+  
+## 注意
+- 队列 queue的弹出 pop()只是删除。
+- 获取 需要用到 que.front()。
+- 时间复杂度: pop为O(n)，其他为O(1)
+- 空间复杂度: O(n)
+```cpp
+class MyStack {
+public:
+    queue<int> que;
+    /** Initialize your data structure here. */
+    MyStack() {
+
+    }
+    /** Push element x onto stack. */
+    void push(int x) {
+        que.push(x);
+    }
+    /** Removes the element on top of the stack and returns that element. */
+    int pop() {
+        int size = que.size();
+        size--;
+        while (size--) { // 将队列头部的元素（除了最后一个元素外） 重新添加到队列尾部
+            que.push(que.front());
+            que.pop();
+        }
+        int result = que.front(); // 此时弹出的元素顺序就是栈的顺序了
+        que.pop();
+        return result;
+    }
+
+    /** Get the top element. */
+    int top() {
+        return que.back();
+    }
+
+    /** Returns whether the stack is empty. */
+    bool empty() {
+        return que.empty();
+    }
+};
+
+```
+  
